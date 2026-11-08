@@ -7,16 +7,20 @@ Resources: No starter code was used.
 Date: September 26, 2026
 """
 
-gifts = []
 
-print("Welcome to the Gift Registry!")
-
-while True:
+def show_menu():
+    """Display the Gift Registry menu."""
     print("1. Add a gift")
     print("2. View gift registry")
     print("3. Mark a gift as purchased")
     print("4. Remove a gift")
     print("5. Exit")
+gifts = []
+
+print("Welcome to the Gift Registry!")
+
+while True:
+    show_menu()
 
     choice = input("Enter your choice: ")
 
