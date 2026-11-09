@@ -24,7 +24,7 @@ This project uses concepts from Chapters 1-8, including:
 - If, elif, and else statements
 - For loops and while loops
 - User input
--Functions
+- Functions
 
 ## How to Run the Program
 
