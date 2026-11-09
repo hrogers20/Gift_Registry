@@ -29,6 +29,16 @@ def add_gift():
     gifts.append(gift)
     print(gift_name, "was added for $", gift_price)
 
+def view_gifts():
+    """Display all gifts in the registry."""
+    if len(gifts) == 0:
+        print("Your gift registry is empty.")
+    else:
+        for gift in gifts:
+            if gift["purchased"] == True:
+                print(gift["name"], "-", "$", gift["price"], "- Purchased")
+            else:
+                print(gift["name"], "-", "$", gift["price"], "- Not Purchased")
 
 gifts = []
 print("Welcome to the Gift Registry!")
@@ -43,15 +53,9 @@ while True:
 
         
     elif choice == "2":
-        if len(gifts) == 0:
-            print("Your gift registry is empty.")
-        else:
-            for gift in gifts:
-                if gift["purchased"] == True:
-                    print(gift["name"], "-", "$", gift["price"], "- Purchased")
-                else:
-                    print(gift["name"], "-", "$", gift["price"], "- Not Purchased")
+            view_gifts()
 
+            
     elif choice == "3":
         gift_name = input("Enter the name of the gift that was purchased: ")
         found = False
