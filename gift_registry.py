@@ -15,8 +15,22 @@ def show_menu():
     print("3. Mark a gift as purchased")
     print("4. Remove a gift")
     print("5. Exit")
-gifts = []
 
+def add_gift():
+    """Add a new gift to the registry."""
+    gift_name = input("Enter the name of the gift: ")
+    gift_price = float(input("Enter the gift price: $"))
+
+    gift = {
+        "name": gift_name,
+        "price": gift_price,
+        "purchased": False
+    }
+    gifts.append(gift)
+    print(gift_name, "was added for $", gift_price)
+
+
+gifts = []
 print("Welcome to the Gift Registry!")
 
 while True:
@@ -25,18 +39,9 @@ while True:
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        gift_name = input("Enter the name of the gift: ")
-        gift_price = float(input("Enter the gift price: $"))
+        add_gift()   
 
-        gift = {
-            "name": gift_name,
-            "price": gift_price,
-            "purchased": False
-        }
-
-        gifts.append(gift)
-        print(gift_name, "was added for $", gift_price)
-
+        
     elif choice == "2":
         if len(gifts) == 0:
             print("Your gift registry is empty.")
