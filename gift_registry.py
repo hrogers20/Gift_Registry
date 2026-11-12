@@ -8,24 +8,7 @@ Date: September 26, 2026
 """
 
 import json
-
-
-
-class Gift:
-    """Represents a gift in the registry."""
-
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-        self.purchased = False
-
-    def to_dict(self):
-        """Convert a gift into a dictionary."""
-        return {
-            "name": self.name,
-            "price": self.price,
-            "purchased": self.purchased
-        }
+from gift import Gift
 
 
 def save_gifts():
