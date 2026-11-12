@@ -8,6 +8,16 @@ Date: September 26, 2026
 """
 
 
+
+class Gift:
+    """Represents a gift in the registry."""
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.purchased = False
+
+
 def show_menu():
     """Display the Gift Registry menu."""
     print("1. Add a gift")
@@ -21,11 +31,7 @@ def add_gift():
     gift_name = input("Enter the name of the gift: ")
     gift_price = float(input("Enter the gift price: $"))
 
-    gift = {
-        "name": gift_name,
-        "price": gift_price,
-        "purchased": False
-    }
+    gift = Gift(gift_name, gift_price)
     gifts.append(gift)
     print(gift_name, "was added for $", gift_price)
 
@@ -33,20 +39,21 @@ def view_gifts():
     """Display all gifts in the registry."""
     if len(gifts) == 0:
         print("Your gift registry is empty.")
-    else:
+    else:      
         for gift in gifts:
-            if gift["purchased"] == True:
-                print(gift["name"], "-", "$", gift["price"], "- Purchased")
+            if gift.purchased == True:
+                print(gift.name, "-", "$", gift.price, "- Purchased")
             else:
-                print(gift["name"], "-", "$", gift["price"], "- Not Purchased")
+                print(gift.name, "-", "$", gift.price, "- Not Purchased")
+
 def mark_purchased():
     """Mark a gift as purchased."""
     gift_name = input("Enter the name of the gift that was purchased: ")
     found = False
 
     for gift in gifts:
-        if gift["name"] == gift_name:
-            gift["purchased"] = True
+        if gift.name == gift_name:
+            gift.purchased = True
             print(gift_name, "has been marked as purchased!")
             found = True
             break
@@ -60,7 +67,7 @@ def remove_gift():
     found = False
 
     for gift in gifts:
-        if gift["name"] == gift_name:
+        if gift.name == gift_name:
             gifts.remove(gift)
             print(gift_name, "has been removed from the registry.")
             found = True
