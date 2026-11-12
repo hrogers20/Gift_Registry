@@ -17,7 +17,7 @@ This project is a Python gift registry program. It allows a user to add gifts (a
 
 ## Course Concepts Used
 
-This project uses concepts from Chapters 1-8, including:
+This project uses concepts from Chapters 1-11, including:
 
 - Variables and simple data types
 - Lists and dictionaries
@@ -25,6 +25,10 @@ This project uses concepts from Chapters 1-8, including:
 - For loops and while loops
 - User input
 - Functions
+- Classes and objects
+- Modules and imports
+- File handling with JSON
+- Exception handling with try and except
 
 ## How to Run the Program
 
@@ -34,3 +38,17 @@ This project uses concepts from Chapters 1-8, including:
 4. Choose an option from the menu (1–5).
 5. Follow the instructions on the screen.
 6. Enter 5 to exit the program.
+
+## Automated Testing
+
+This project includes automated tests using pytest.
+
+The tests check:
+- Creating a Gift object
+- Converting a Gift object into a dictionary
+
+To run the tests, enter this command in the terminal:
+
+python3 -m pytest test_gift.py -v
+
+Both tests should pass.
