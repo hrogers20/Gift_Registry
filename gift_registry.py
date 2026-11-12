@@ -49,7 +49,11 @@ def show_menu():
 def add_gift():
     """Add a new gift to the registry."""
     gift_name = input("Enter the name of the gift: ")
-    gift_price = float(input("Enter the gift price: $"))
+    try:
+        gift_price = float(input("Enter the gift price: $"))
+    except ValueError:
+        print("Invalid price. Please enter a number.")
+        return
 
     gift = Gift(gift_name, gift_price)
     gifts.append(gift)
