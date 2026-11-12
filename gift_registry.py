@@ -7,6 +7,8 @@ Resources: No starter code was used.
 Date: September 26, 2026
 """
 
+import json
+
 
 
 class Gift:
@@ -16,6 +18,41 @@ class Gift:
         self.name = name
         self.price = price
         self.purchased = False
+
+    def to_dict(self):
+        """Convert a gift into a dictionary."""
+        return {
+            "name": self.name,
+            "price": self.price,
+            "purchased": self.purchased
+        }
+
+
+def save_gifts():
+    """Save all gifts to a JSON file."""
+    gift_data = []
+
+    for gift in gifts:
+        gift_data.append(gift.to_dict())
+
+    with open("gifts.json", "w") as file:
+        json.dump(gift_data, file, indent=4)
+
+
+def load_gifts():
+    """Load gifts from a JSON file."""
+    try:
+        with open("gifts.json", "r") as file:
+            gift_data = json.load(file)
+
+        for item in gift_data:
+            gift = Gift(item["name"], item["price"])
+            gift.purchased = item["purchased"]
+            gifts.append(gift)
+
+    except FileNotFoundError:
+        pass
+
 
 
 def show_menu():
@@ -80,14 +117,17 @@ def remove_gift():
 gifts = []
 print("Welcome to the Gift Registry!")
 
+
+load_gifts()
+
 while True:
     show_menu()
 
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        add_gift()   
-
+        add_gift()
+        save_gifts()
         
     elif choice == "2":
         view_gifts()
@@ -95,9 +135,11 @@ while True:
 
     elif choice == "3":
         mark_purchased()
+        save_gifts()
     
     elif choice == "4":
         remove_gift()
+        save_gifts()
     
     elif choice == "5":
         print("Thank you for using the Gift Registry!")
