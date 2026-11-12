@@ -54,7 +54,9 @@ def add_gift():
     except ValueError:
         print("Invalid price. Please enter a number.")
         return
-
+    if gift_price < 0:
+        print("Price cannot be negative.")
+        return
     gift = Gift(gift_name, gift_price)
     gifts.append(gift)
     print(gift_name, "was added for $", gift_price)
